@@ -1,0 +1,40 @@
+Attribute VB_Name = "ReturnSoundSytem"
+'[student identifier removed]
+Option Explicit
+Sub ReturnSoundSystem()
+Range("H3").Value = InputBox("Sound systemm return condition?", "RETURN CONDITION", vbOKCancel)
+    'input should be added and then placed in Cell H3 for the question posed in the inputbox titled RETURN CONDITION
+    'If
+    
+    
+Call Invoice
+    
+    
+End Sub
+Private Sub Invoice()
+Dim strSoundSystemGroup As String
+'strSoundSystemGroup variable is declared as a string
+Dim iNumberofdays As Double
+'iNumberofdays variable is declared as a Double
+Dim strDelivery As String
+'strDelivery variable is declared as a String
+Dim strBSSC As String
+'Before Sound System condition abbreviation = BSSC
+'strBSSC variable is declared as a string
+Dim strASSC As String
+'After Sound System condition abbreviation = ASSC
+'strBSSC variable is declared as a string
+
+Range("B2").Value = strSoundSystemGroup
+Range("E2").Value = iNumberofdays
+Range("E3").Value = strDelivery
+Range("H2").Value = strBSSC
+Range("H2").Value = strASSC
+
+
+'Range("B10").Value = Call TotalDayfee
+
+
+
+
+End Sub
