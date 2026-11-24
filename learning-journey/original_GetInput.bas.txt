@@ -1,0 +1,70 @@
+Attribute VB_Name = "GetInput"
+'[student identifier removed]
+Option Explicit
+Sub GetInput()
+    Sheet1.Select
+    'Sheet1 is selected as the active sheet
+    Dim strOption1 As String
+    'Option1 is declared as a string
+    Dim strOption2 As String
+    'Option2 is declared as a string
+    Dim strOption3 As String
+    'Option3 is declared as a string
+    
+    Range("F10").Value = strOption1
+    'F10 is selected for future input
+    Range("F11").Value = strOption2
+    'F11 is selected for future input
+    Range("F12").Value = strOption3
+    'F12 is selected for future input
+    
+    Dim strVari As String
+     'strVari is declared as a string
+    strVari = UCase(InputBox("Select the sound system group." & "Option: ""A"" Or ""B"" OR ""C"" ", "SOUND SYSTEM GROUP"))
+    'strVari after it is declared as a string, we use Ucase to ensure that the input placed in the inputbox is of uppercase
+    If strVari = strOption1 Or strVari = strOption2 Or strVari = strOption3 Then
+    'The user's input must be verified by comparison with the defined variables (A, B, and C) using an If...Then...Else statement.
+    
+    Range("B2").Select = strVari
+    'B2 must show the value that the user entered.
+    Call SoundSystemDescription
+    'Using the call function to call the sub prodecure named SoundSystemDescription
+    Call RentalDetails
+    'Using the call function to call the sub prodecure named RentalDetails
+    Call SoundSystemConditionBefore
+    'Using the call function to call the sub prodecure named SoundSystemConditionBefore
+    
+    
+    MsgBox "Incorrect value Entered." & "Please try again!", vbCritical + vbOKOnly, "ERROR"
+    'Using the message Box to display what will happen if the wrong value is entered, using vbCritical to display the icon and vbOKOnly to display the default functions
+    
+End Sub
+
+Private Sub SoundSystemDescription(strVari As String)
+'guaranteeing that other code modules cannot access this sub procedure by making it a private sub.
+    Select Case strVari
+    'Using select case funtion with the declared variable
+        Case Is = "A"
+        Range("B3").Value = Range("G10")
+         'if the users input matches the on in the " ",The the value displayed in B3 must move to the cell G10
+        Case Is = "B"
+        Range("B3").Value = Range("G11")
+        'if the users input matches the on in the " ",The the value displayed in B3 must move to the cell G11
+        Case Is = "C"
+        Range("B3").Value = Range("G12")
+        'if the users input matches the on in the " ",The the value displayed in B3 must move to the cell G12
+    End Select
+    'Ending the case function
+End Sub
+
+Private Sub RentalDetails()
+Range("E2").Value = InputBox("For how many days do you need the sound system?", "Days", vbOKCancel)
+'input should be added and then placed in Cell E2 for the question posed in the inputbox titled Days
+Range("E3").Value = InputBox("Should we deliver the sound system? (Y/N)", "Delivery", vbOKCancel)
+'input should be added and then placed in Cell E3 for the question posed in the inputbox titled delivery
+End Sub
+
+Private Sub SoundSystemConditionBefore()
+Range("H2").Value = InputBox("Which of the " & WorksheetFunction.CountA(Range("F15:F17")) & " sound system conditions best describe the sound system?", "SOUND SYSTEM CONDITION")
+'input should be added and then placed in Cell H2 for the question posed in the inputbox titled SOUND SYSTEM CONDITION, used the worksheetfunction "counta" to count the cells which have values in Range F15 to F17
+End Sub
