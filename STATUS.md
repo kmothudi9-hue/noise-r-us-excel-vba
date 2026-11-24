@@ -1,0 +1,1 @@
+Learning project: revised VBA needs testing in desktop Excel. Rates and condition rules are assumptions, not verified policies.
